@@ -1,8 +1,8 @@
-#Concurrency in Python with Asyncio
+# Concurrency in Python with Asyncio
 
 Source code to the upcoming Manning book *Concurrency in Python with Asyncio*.
 
-##Running
+## Running
 This code tested successfully with Python verison 3.8.5. Using a different version may give you different results or may not work. 
 
 You have two options to execute this code. You can run manually install and set up things, or you can use Docker with the provided `Dockerfile` and `docker-compose.yml`
