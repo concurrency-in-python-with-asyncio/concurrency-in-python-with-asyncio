@@ -5,7 +5,7 @@ Source code to the upcoming Manning book *Concurrency in Python with Asyncio*.
 ## Running
 This code tested successfully with Python verison 3.8.5. Using a different version may give you different results or may not work. 
 
-You have two options to execute this code. You can run manually install and set up things, or you can use Docker with the provided `Dockerfile` and `docker-compose.yml`
+You have two options to execute this code. You can manually install and set up things, or you can use Docker with the provided `Dockerfile` and `docker-compose.yml`
 
 **Manual installation**
 
@@ -22,5 +22,6 @@ You have two options to execute this code. You can run manually install and set 
 **Docker**
 
 1. Install the latest version of Docker from https://docs.docker.com/get-docker/.
+
 2. You should now be able to run any code listing successfully with `docker-compose run --rm concurrency-in-python scriptname.py` followed by the file you wish to run. For example `docker-compose run --rm concurrency-in-python chapter_01/listing_1_1.py` will run the first code listing from the first chapter.
 
