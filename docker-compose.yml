@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  concurrency-in-python:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/code
+    working_dir: /code
