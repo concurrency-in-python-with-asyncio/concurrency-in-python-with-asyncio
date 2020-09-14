@@ -8,4 +8,6 @@ RUN pip install -r requirements.txt
 
 ENV PYTHONPATH "${PYTHONPATH}:/code"
 
+EXPOSE 8000
+
 ENTRYPOINT ["python"]
