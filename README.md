@@ -23,5 +23,6 @@ You have two options to execute this code. You can manually install and set up t
 
 1. Install the latest version of Docker from https://docs.docker.com/get-docker/.
 
-2. You should now be able to run any code listing successfully with `docker-compose run --service-ports --rm concurrency-in-python scriptname.py` followed by the file you wish to run. For example `docker-compose run --rm concurrency-in-python chapter_01/listing_1_1.py` will run the first code listing from the first chapter.
+2. You should now be able to run any code listing successfully with `docker-compose run --service-ports --rm concurrency-in-python scriptname.py` followed by the file you wish to run. For example `docker-compose run --service-ports --rm concurrency-in-python chapter_01/listing_1_1.py` will run the first code listing from the first chapter.
 
+Note that when running chapter 6 ensure that your docker environment is set up to use multiple CPU cores.
