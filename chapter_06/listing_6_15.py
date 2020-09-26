@@ -37,7 +37,7 @@ async def main():
     pool = ProcessPoolExecutor()
     tasks = []
     for _ in range(5):
-        tasks.append(loop.run_in_executor(pool, run_in_new_loop))
+        tasks.append(loop.run_in_executor(pool, run_in_new_loop, 10000))
     all_results: List[List[Dict]] = await asyncio.gather(*tasks)
     total_queries = sum([len(result) for result in all_results])
     print(f'Retrieved {total_queries} products the product database.')

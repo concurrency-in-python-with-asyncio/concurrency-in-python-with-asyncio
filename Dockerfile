@@ -13,6 +13,7 @@ ENV MULTIDICT_NO_EXTENSIONS 1
 
 ENV PYTHONPATH "${PYTHONPATH}:/code"
 
+RUN apk add --no-cache build-base
 RUN pip install -r requirements.txt
 
 EXPOSE 8000
