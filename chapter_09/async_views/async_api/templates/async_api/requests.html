@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Request Summary</title>
+</head>
+<body>
+<h1>Summary of requests:</h1>
+<h2>Failures:</h2>
+<table>
+    {% for failure in failed_results %}
+    <tr>
+        <td>{{failure}}</td>
+    </tr>
+    {% endfor %}
+</table>
+<h2>Successful Results:</h2>
+<table>
+    <tr>
+        <td>Status code</td>
+        <td>Response time (microseconds)</td>
+        <td>Response size</td>
+    </tr>
+    {% for result in successful_results %}
+    <tr>
+        <td>{{result.status}}</td>
+        <td>{{result.time}}</td>
+        <td>{{result.body_length}}</td>
+    </tr>
+    {% endfor %}
+</table>
+</body>
+</html>
