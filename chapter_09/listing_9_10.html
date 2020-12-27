@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <title>Starlette Web Sockets</title>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            let socket = new WebSocket("ws://localhost:8000/counter");
+
+            socket.onmessage = (event) => {
+                const counter = document.querySelector("#counter");
+                counter.textContent = event.data;
+            };
+        });
+    </script>
+</head>
+<body>
+    <span>Users online: </span>
+    <span id="counter"></span>
+</body>
+</html>
