@@ -7,7 +7,7 @@ def call_later():
 
 
 async def main():
-    loop = asyncio.get_event_loop()
+    loop = asyncio.get_running_loop()
     loop.call_soon(call_later)
     await delay(1)
 
