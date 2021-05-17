@@ -1,5 +1,5 @@
 requests==2.24.0
-aiohttp==3.6.2
+aiohttp~=3.7.3
 aiohttp==3.6.2
 asgiref==3.3.1
 async-timeout==3.0.1
@@ -25,7 +25,7 @@ pytz==2020.4
 requests==2.24.0
 soupsieve==2.1
 sqlparse==0.4.1
-starlette==0.14.1
+starlette~=0.13.6
 threadpoolctl==2.1.0
 urllib3==1.25.10
 uvicorn==0.12.3
@@ -33,3 +33,5 @@ uvloop==0.14.0
 websockets==8.1
 Werkzeug==1.0.1
 yarl==1.6.1
+fastapi~=0.63.0
+cachetools==4.2.1
