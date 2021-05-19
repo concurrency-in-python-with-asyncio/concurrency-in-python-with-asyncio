@@ -6,6 +6,8 @@ from typing import List, Tuple
 selector = selectors.DefaultSelector()
 
 server_socket = socket.socket()
+server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+
 server_address = ('0.0.0.0', 8000)
 server_socket.setblocking(False)
 server_socket.bind(server_address)
