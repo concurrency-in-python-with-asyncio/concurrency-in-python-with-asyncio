@@ -2,7 +2,7 @@ import requests
 
 response = requests.get('https://www.example.com')
 
-headers = [f'{key}: {response.headers[key]}' for key in response.headers]
+headers = [f'{key}: {header}' for key, header in response.headers.items()]
 
 formatted_headers = '\n'.join(headers)
 
