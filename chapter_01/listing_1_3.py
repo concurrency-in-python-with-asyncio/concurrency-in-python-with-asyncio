@@ -2,8 +2,7 @@ import threading
 
 
 def hello_from_thread():
-    thread_name = threading.current_thread()
-    print(f'Hello from thread {thread_name}!')
+    print(f'Hello from thread {threading.current_thread()}!')
 
 
 hello_thread = threading.Thread(target=hello_from_thread)

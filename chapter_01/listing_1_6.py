@@ -31,4 +31,4 @@ fibs_with_threads()
 
 end_threads = time.time()
 
-print(f'Threads took {end_threads - start_threads} seconds.')
+print(f'Threads took {end_threads - start_threads:.4f} seconds.')
