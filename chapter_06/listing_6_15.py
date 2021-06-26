@@ -18,7 +18,7 @@ async def query_products_concurrently(pool, queries):
 
 def run_in_new_loop(num_queries: int) -> List[Dict]:
     async def run_queries():
-        async with asyncpg.create_pool(host='0.0.0.0',
+        async with asyncpg.create_pool(host='127.0.0.1',
                                        port=5432,
                                        user='postgres',
                                        password='password',
