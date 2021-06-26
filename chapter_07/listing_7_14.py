@@ -12,7 +12,7 @@ class LoadTester(Tk):
         Tk.__init__(self, *args, **kwargs)
         self._loop = loop
         self._load_test: StressTest = None
-
+        self.title('URL Requester')
 
         self._url_label = Label(self, text="URL:")
         self._url_label.grid(column=0, row=0)
