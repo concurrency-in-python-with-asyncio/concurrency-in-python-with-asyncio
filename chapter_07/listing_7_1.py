@@ -10,7 +10,7 @@ def echo(client: socket):
 
 
 with socket(AF_INET, SOCK_STREAM) as server:
-    server.bind(('0.0.0.0', 8000))
+    server.bind(('127.0.0.1', 8000))
     server.listen()
     while True:
         connection, _ = server.accept() #A
