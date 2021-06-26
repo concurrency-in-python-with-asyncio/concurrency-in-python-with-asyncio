@@ -1,7 +1,7 @@
 import aiohttp
 import asyncio
 import logging
-from chapter_04 import  fetch_status
+from chapter_04 import fetch_status
 from util import async_timed
 
 
