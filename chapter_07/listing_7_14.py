@@ -2,6 +2,7 @@ from tkinter import Tk
 from tkinter import Label
 from tkinter import Entry
 from tkinter import ttk
+from typing import Optional
 
 from chapter_07.listing_7_13 import StressTest
 
@@ -11,7 +12,7 @@ class LoadTester(Tk):
     def __init__(self, loop, *args, **kwargs): #A
         Tk.__init__(self, *args, **kwargs)
         self._loop = loop
-        self._load_test: StressTest = None
+        self._load_test: Optional[StressTest] = None
         self.title('URL Requester')
 
         self._url_label = Label(self, text="URL:")
