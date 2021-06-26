@@ -25,7 +25,7 @@ class FileServer:
 
 
 async def main():
-    server = FileServer('0.0.0.0', 9000)
+    server = FileServer('127.0.0.1', 9000)
     await server.start_server()
 
 

@@ -48,7 +48,7 @@ async def main():
     sys.stdout.write('Enter username: ')
     username = await read_line(stdin_reader)
 
-    reader, writer = await asyncio.open_connection('0.0.0.0', 8000)  # C
+    reader, writer = await asyncio.open_connection('127.0.0.1', 8000)  # C
 
     writer.write(f'CONNECT {username}\n'.encode())
     await writer.drain()

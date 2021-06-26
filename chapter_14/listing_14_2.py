@@ -24,7 +24,7 @@ class Server:
 
 
 async def main():
-    server = Server('0.0.0.0', 9000)
+    server = Server('127.0.0.1', 9000)
     await server.start_server()
 
 

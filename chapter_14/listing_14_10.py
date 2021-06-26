@@ -23,7 +23,7 @@ async def main(sel: BaseSelector):
     sock = socket.socket()
     sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 
-    sock.bind(('0.0.0.0', 8000))
+    sock.bind(('127.0.0.1', 8000))
     sock.listen()
     sock.setblocking(False)
 
