@@ -8,7 +8,7 @@ db = psycopg2.connect(conn_info)
 
 
 @app.route('/brands')
-def hello_world():
+def brands():
     cur = db.cursor()
     cur.execute('SELECT brand_id, brand_name FROM brand')
     rows = cur.fetchall()
