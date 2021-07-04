@@ -3,6 +3,7 @@ import asyncpg
 from util import async_timed
 from typing import List, Dict
 from concurrent.futures.process import ProcessPoolExecutor
+from chapter_05.listing_5_7 import product_query
 
 
 async def query_product(pool):
@@ -27,7 +28,7 @@ def run_in_new_loop(num_queries: int) -> List[Dict]:
                                        max_size=6) as pool:
             return await query_products_concurrently(pool, num_queries)
 
-    results = [dict(result) for result in asyncio.run(run_queries())]
+    results = [dict(result) for result in asyncio.run(run_queries())] #A
     return results
 
 
@@ -35,10 +36,8 @@ def run_in_new_loop(num_queries: int) -> List[Dict]:
 async def main():
     loop = asyncio.get_running_loop()
     pool = ProcessPoolExecutor()
-    tasks = []
-    for _ in range(5):
-        tasks.append(loop.run_in_executor(pool, run_in_new_loop, 10000))
-    all_results: List[List[Dict]] = await asyncio.gather(*tasks)
+    tasks = [loop.run_in_executor(pool, run_in_new_loop, 10000) for _ in range(5)] #B
+    all_results = await asyncio.gather(*tasks) #C
     total_queries = sum([len(result) for result in all_results])
     print(f'Retrieved {total_queries} products the product database.')
 
