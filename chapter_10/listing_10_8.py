@@ -9,10 +9,10 @@ from typing import Dict, Set, Awaitable, Optional, List
 
 routes = web.RouteTableDef()
 
-PRODUCT_BASE = 'http://0.0.0.0:8000'
-INVENTORY_BASE = 'http://0.0.0.0:8001'
-FAVORITE_BASE = 'http://0.0.0.0:8002'
-CART_BASE = 'http://0.0.0.0:8003'
+PRODUCT_BASE = 'http://127.0.0.1:8000'
+INVENTORY_BASE = 'http://127.0.0.1:8001'
+FAVORITE_BASE = 'http://127.0.0.1:8002'
+CART_BASE = 'http://127.0.0.1:8003'
 
 
 @routes.get('/products/all')
