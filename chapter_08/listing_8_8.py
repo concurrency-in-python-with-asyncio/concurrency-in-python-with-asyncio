@@ -20,5 +20,6 @@ async def read_line(stdin_reader: StreamReader) -> str:
         else:
             input_buffer.append(input_char)
             sys.stdout.write(input_char.decode())
+            sys.stdout.flush()
     clear_line()
     return b''.join(input_buffer).decode()
