@@ -55,7 +55,7 @@ async def get_products_with_inventory(session: ClientSession, product_response) 
         url = f"{INVENTORY_BASE}/products/{product_id}/inventory"
         return asyncio.create_task(session.get(url))
 
-    def create_product_record(product_id: int, inventory: int) -> Dict:
+    def create_product_record(product_id: int, inventory: Optional[int]) -> Dict:
         return {'product_id': product_id, 'inventory': inventory}
 
     inventory_tasks_to_product_id = {
