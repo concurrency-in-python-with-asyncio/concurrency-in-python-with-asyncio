@@ -1,4 +1,4 @@
-from queue import Queue, Empty
+from queue import Queue
 from tkinter import Tk
 from tkinter import Label
 from tkinter import Entry
@@ -50,11 +50,11 @@ class LoadTester(Tk):
     def _queue_update(self, completed_requests: int, total_requests: int):  # D
         self._queue.put(int(completed_requests / total_requests * 100))
 
-    def _poll_queue(self): # E
-        try:
-            percent_complete = self._queue.get_nowait()
+    def _poll_queue(self):  # E
+        if not self._queue.empty():
+            percent_complete = self._queue.get()
             self._update_bar(percent_complete)
-        except Empty:
+        else:
             if self._load_test:
                 self.after(self._refresh_ms, self._poll_queue)
 
