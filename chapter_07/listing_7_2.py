@@ -12,7 +12,7 @@ class ClientEchoThread(Thread):
         try:
             while True:
                 data = self.client.recv(2048)
-                if data == bytes(0): #A
+                if not data: #A
                     raise BrokenPipeError('Connection closed!')
                 print(f'Received {data}, sending!')
                 self.client.sendall(data)
