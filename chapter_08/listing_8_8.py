@@ -17,6 +17,7 @@ async def read_line(stdin_reader: StreamReader) -> str:
             if len(input_buffer) > 0:
                 input_buffer.pop()
                 erase_last_char()
+                sys.stdout.flush()
         else:
             input_buffer.append(input_char)
             sys.stdout.write(input_char.decode())
