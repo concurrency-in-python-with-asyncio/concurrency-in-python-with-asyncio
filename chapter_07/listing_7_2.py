@@ -1,5 +1,5 @@
 from threading import Thread
-from socket import socket, AF_INET, SOCK_STREAM, SHUT_RDWR
+import socket
 
 
 class ClientEchoThread(Thread):
@@ -22,10 +22,11 @@ class ClientEchoThread(Thread):
     def close(self):
         if self.is_alive(): #C
             self.client.sendall(bytes('Shutting down!', encoding='utf-8'))
-            self.client.shutdown(SHUT_RDWR) #D
+            self.client.shutdown(socket.SHUT_RDWR) #D
 
 
-with socket(AF_INET, SOCK_STREAM) as server:
+with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as server:
+    server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
     server.bind(('127.0.0.1', 8000))
     server.listen()
     connection_threads = []
