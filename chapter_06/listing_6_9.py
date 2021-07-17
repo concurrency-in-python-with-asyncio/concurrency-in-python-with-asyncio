@@ -20,7 +20,7 @@ async def reduce(loop, pool, counters, chunk_size) -> Dict[str, int]:
 
 
 async def main(partition_size: int):
-    with open('googlebooks-eng-all-1gram-20120701-a') as f:
+    with open('googlebooks-eng-all-1gram-20120701-a', encoding='utf-8') as f:
         contents = f.readlines()
         loop = asyncio.get_event_loop()
         tasks = []

@@ -2,7 +2,7 @@ import time
 
 freqs = {}
 
-with open('googlebooks-eng-all-1gram-20120701-a') as f:
+with open('googlebooks-eng-all-1gram-20120701-a', encoding='utf-8') as f:
     lines = f.readlines()
 
     start = time.time()

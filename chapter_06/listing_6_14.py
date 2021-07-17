@@ -38,7 +38,7 @@ async def progress_reporter(total_partitions: int):
 async def main(partiton_size: int):
     global map_progress
 
-    with open('googlebooks-eng-all-1gram-20120701-a') as f:
+    with open('googlebooks-eng-all-1gram-20120701-a', encoding='utf-8') as f:
         contents = f.readlines()
         loop = asyncio.get_event_loop()
         tasks = []
