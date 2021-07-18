@@ -49,7 +49,7 @@ async def main(partition_size: int):
             print(f"Aardvark has appeared {final_result['Aardvark']} times.")
 
             end = time.time()
-            print(f'Map reduce took: {(end - start):.4f} seconds')
+            print(f'MapReduce took: {(end - start):.4f} seconds')
 
 
 if __name__ == "__main__":
