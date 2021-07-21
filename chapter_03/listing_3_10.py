@@ -35,7 +35,7 @@ class GracefulExit(SystemExit):
     pass
 
 
-def shutown():
+def shutdown():
     raise GracefulExit()
 
 
@@ -59,7 +59,7 @@ async def main():
     server_socket.listen()
 
     for signame in {'SIGINT', 'SIGTERM'}:
-        loop.add_signal_handler(getattr(signal, signame), shutown)
+        loop.add_signal_handler(getattr(signal, signame), shutdown)
     await connection_listener(server_socket, loop)
 
 
