@@ -11,32 +11,32 @@ class ConnectionState(Enum):
 class Connection:
 
     def __init__(self):
-        self.state = ConnectionState.WAIT_INIT
-        self.condition = asyncio.Condition()
-
-    async def change_state(self, state: ConnectionState):
-        async with self.condition:
-            print(f'change_state: State changing from {self.state} to {state}')
-            self.state = state
-            self.condition.notify_all()
+        self._state = ConnectionState.WAIT_INIT
+        self._condition = asyncio.Condition()
 
     async def initialize(self):
-        await self.change_state(ConnectionState.INITIALIZING)
+        await self._change_state(ConnectionState.INITIALIZING)
         print('initialize: Initializing connection...')
         await asyncio.sleep(3)  # simulate connection startup time
         print('initialize: Finished initializing connection')
-        await self.change_state(ConnectionState.INITIALIZED)
+        await self._change_state(ConnectionState.INITIALIZED)
 
     async def execute(self, query: str):
-        async with self.condition:
+        async with self._condition:
             print('execute: Waiting for connection to initialize')
-            await self.condition.wait_for(self._is_initialized)
+            await self._condition.wait_for(self._is_initialized)
             print(f'execute: Running {query}!!!')
             await asyncio.sleep(3)  # simulate a long query
 
+    async def _change_state(self, state: ConnectionState):
+        async with self._condition:
+            print(f'change_state: State changing from {self._state} to {state}')
+            self._state = state
+            self._condition.notify_all()
+
     def _is_initialized(self):
-        if self.state is not ConnectionState.INITIALIZED:
-            print(f'_is_initialized: Connection not finished initializing, state is {self.state}')
+        if self._state is not ConnectionState.INITIALIZED:
+            print(f'_is_initialized: Connection not finished initializing, state is {self._state}')
             return False
         print(f'_is_initialized: Connection is initialized!')
         return True
