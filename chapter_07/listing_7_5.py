@@ -1,10 +1,7 @@
 import functools
-from asyncio import AbstractEventLoop, Future
-import threading
 import requests
 import asyncio
 from concurrent.futures import ThreadPoolExecutor
-
 from util import async_timed
 
 
