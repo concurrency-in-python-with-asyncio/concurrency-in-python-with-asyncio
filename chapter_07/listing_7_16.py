@@ -15,7 +15,7 @@ passwords = [random_password(10) for _ in range(10000)]
 
 def hash(password: bytes) -> str:
     salt = os.urandom(16)
-    return str(hashlib.scrypt(password, salt=salt, n=2, p=24, r=16))
+    return str(hashlib.scrypt(password, salt=salt, n=2048, p=1, r=8))
 
 
 start = time.time()
