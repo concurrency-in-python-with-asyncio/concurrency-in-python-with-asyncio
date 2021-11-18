@@ -36,7 +36,7 @@ def merge_dictionaries(first: Dict[str, int],
 async def main(partition_size: int):
     with open('googlebooks-eng-all-1gram-20120701-a', encoding='utf-8') as f:
         contents = f.readlines()
-        loop = asyncio.get_event_loop()
+        loop = asyncio.get_running_loop()
         tasks = []
         start = time.time()
         with concurrent.futures.ProcessPoolExecutor() as pool:
