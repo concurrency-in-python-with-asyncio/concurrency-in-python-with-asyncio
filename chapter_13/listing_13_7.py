@@ -24,7 +24,7 @@ async def main():
     e = time.time()
 
     print(f'Total time: {e - s}')
-    #print(encrypted_text)
+    print(encrypted_text)
 
 
 asyncio.run(main())
