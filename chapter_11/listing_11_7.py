@@ -17,7 +17,8 @@ async def get_url(url: str,
 async def main():
     semaphore = Semaphore(10)
     async with ClientSession() as session:
-        tasks = [get_url('https://www.example.com', session, semaphore) for _ in range(1000)]
+        tasks = [get_url('https://www.example.com', session, semaphore)
+                 for _ in range(1000)]
         await asyncio.gather(*tasks)
 
 

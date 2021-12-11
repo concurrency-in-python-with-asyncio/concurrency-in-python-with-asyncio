@@ -34,13 +34,16 @@ async def user_disconnect(username: str, user_lock: Lock):
 async def message_all_users(user_lock: Lock):
     print('Creating message tasks')
     async with user_lock: #B
-        messages = [socket.send(f'Hello {user}') for user, socket in user_names_to_sockets.items()]
+        messages = [socket.send(f'Hello {user}')
+                    for user, socket
+                    in user_names_to_sockets.items()]
         await asyncio.gather(*messages)
 
 
 async def main():
     user_lock = Lock()
-    await asyncio.gather(message_all_users(user_lock), user_disconnect('Eric', user_lock))
+    await asyncio.gather(message_all_users(user_lock),
+                         user_disconnect('Eric', user_lock))
 
 
 asyncio.run(main())
