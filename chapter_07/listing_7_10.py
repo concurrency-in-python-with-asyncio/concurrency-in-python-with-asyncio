@@ -13,7 +13,9 @@ class IntListThreadsafe:
             enumerator = enumerate(self._inner_list)
             return [index for index, value in enumerator if value == to_find]
 
-    def find_and_replace(self, to_replace: int, replace_with: int) -> None:
+    def find_and_replace(self,
+                         to_replace: int,
+                         replace_with: int) -> None:
         with self._lock:
             indices = self.indices_of(to_replace)
             for index in indices:
