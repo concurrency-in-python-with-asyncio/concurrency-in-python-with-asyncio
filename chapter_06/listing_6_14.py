@@ -17,7 +17,7 @@ def init(progress: Value):
 def map_frequencies(chunk: List[str]) -> Dict[str, int]:
     counter = {}
     for line in chunk:
-        word, _, _, count = line.split('\t')
+        word, _, count, _ = line.split('\t')
         if counter.get(word):
             counter[word] = counter[word] + int(count)
         else:
