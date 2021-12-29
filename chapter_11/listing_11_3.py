@@ -30,7 +30,9 @@ async def user_disconnect(username: str):
 
 async def message_all_users():
     print('Creating message tasks')
-    messages = [socket.send(f'Hello {user}') for user, socket in user_names_to_sockets.items()]
+    messages = [socket.send(f'Hello {user}')
+                for user, socket
+                in user_names_to_sockets.items()]
     await asyncio.gather(*messages)
 
 

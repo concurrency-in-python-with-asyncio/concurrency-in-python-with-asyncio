@@ -26,13 +26,15 @@ async def process_page(work_item: WorkItem, queue: Queue, session: ClientSession
     try:
         response = await asyncio.wait_for(session.get(work_item.url), timeout=3)
         if work_item.item_depth == max_depth:
-            print(f'Max depth reached, not processing more from {work_item.url}')
+            print(f'Max depth reached, '
+                  f'not processing more for {work_item.url}')
         else:
             body = await response.text()
             soup = BeautifulSoup(body, 'html.parser')
             links = soup.find_all('a', href=True)
             for link in links:
-                queue.put_nowait(WorkItem(work_item.item_depth + 1, link['href']))
+                queue.put_nowait(WorkItem(work_item.item_depth + 1,
+                                          link['href']))
     except Exception as e:
         logging.exception(f'Error processing url {work_item.url}')
 
@@ -42,7 +44,8 @@ async def main(): #C
     url_queue = Queue()
     url_queue.put_nowait(WorkItem(0, start_url))
     async with aiohttp.ClientSession() as session:
-        workers = [asyncio.create_task(worker(i, url_queue, session, 3)) for i in range(100)]
+        workers = [asyncio.create_task(worker(i, url_queue, session, 3))
+                   for i in range(100)]
         await url_queue.join()
         [w.cancel() for w in workers]
 

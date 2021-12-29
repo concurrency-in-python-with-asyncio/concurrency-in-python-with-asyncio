@@ -49,7 +49,8 @@ async def create_order_queue(app: Application):
     print('Creating order queue and tasks.')
     queue: Queue = asyncio.PriorityQueue(10)
     app[QUEUE_KEY] = queue
-    app[TASKS_KEY] = [asyncio.create_task(process_order_worker(i, queue)) for i in range(5)]
+    app[TASKS_KEY] = [asyncio.create_task(process_order_worker(i, queue))
+                      for i in range(5)]
 
 
 async def destroy_queue(app: Application):

@@ -20,10 +20,14 @@ async def main():
     semaphore = Semaphore(2)
 
     print("Acquiring twice, releasing three times...")
-    await asyncio.gather(acquire(semaphore), acquire(semaphore), release(semaphore))
+    await asyncio.gather(acquire(semaphore),
+                         acquire(semaphore),
+                         release(semaphore))
 
     print("Acquiring three times...")
-    await asyncio.gather(acquire(semaphore), acquire(semaphore), acquire(semaphore))
+    await asyncio.gather(acquire(semaphore),
+                         acquire(semaphore),
+                         acquire(semaphore))
 
 
 asyncio.run(main())
