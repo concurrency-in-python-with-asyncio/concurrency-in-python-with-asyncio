@@ -39,7 +39,7 @@ async def get_product(request: Request) -> Response:
 
 async def create_database_pool(app: Application):
     print('Creating database pool.')
-    pool: Pool = await asyncpg.create_pool(host='0.0.0.0',
+    pool: Pool = await asyncpg.create_pool(host='127.0.0.1',
                                            port=5432,
                                            user='postgres',
                                            password='password',

@@ -45,7 +45,7 @@ async def main():
     async def client_connected(reader: StreamReader, writer: StreamWriter) -> None: #E
         await server_state.add_client(reader, writer)
 
-    server = await asyncio.start_server(client_connected, '0.0.0.0', 8000) #F
+    server = await asyncio.start_server(client_connected, '127.0.0.1', 8000) #F
 
     async with server:
         await server.serve_forever()

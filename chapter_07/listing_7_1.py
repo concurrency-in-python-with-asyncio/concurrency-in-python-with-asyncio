@@ -1,5 +1,5 @@
 from threading import Thread
-from socket import socket, AF_INET, SOCK_STREAM
+import socket
 
 
 def echo(client: socket):
@@ -9,10 +9,11 @@ def echo(client: socket):
         client.sendall(data)
 
 
-with socket(AF_INET, SOCK_STREAM) as server:
-    server.bind(('0.0.0.0', 8000))
+with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as server:
+    server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+    server.bind(('127.0.0.1', 8000))
     server.listen()
     while True:
-        connection, _ = server.accept() #A
-        thread = Thread(target=echo, args=(connection,)) #B
-        thread.start() #C
+        connection, _ = server.accept()  # A
+        thread = Thread(target=echo, args=(connection,))  # B
+        thread.start()  # C

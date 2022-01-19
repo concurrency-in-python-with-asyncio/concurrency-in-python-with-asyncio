@@ -3,12 +3,12 @@ import psycopg2
 
 app = Flask(__name__)
 
-conn_info = "dbname=products user=postgres password=password host=0.0.0.0"
+conn_info = "dbname=products user=postgres password=password host=127.0.0.1"
 db = psycopg2.connect(conn_info)
 
 
 @app.route('/brands')
-def hello_world():
+def brands():
     cur = db.cursor()
     cur.execute('SELECT brand_id, brand_name FROM brand')
     rows = cur.fetchall()

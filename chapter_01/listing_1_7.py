@@ -14,4 +14,4 @@ read_example()
 
 sync_end = time.time()
 
-print(f'Running synchronously took {sync_end - sync_start} seconds.')
+print(f'Running synchronously took {sync_end - sync_start:.4f} seconds.')

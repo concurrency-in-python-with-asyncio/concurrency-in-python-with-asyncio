@@ -7,10 +7,10 @@ from util import async_timed
 @async_timed()
 async def main():
     async with aiohttp.ClientSession() as session:
-        example_url = 'https://example.com'
-        fetchers = [fetch_status(session, example_url),
-                    fetch_status(session, example_url),
-                    fetch_status(session, example_url, delay=3)]
+        url = 'https://example.com'
+        fetchers = [asyncio.create_task(fetch_status(session, url)),
+                    asyncio.create_task(fetch_status(session, url)),
+                    asyncio.create_task(fetch_status(session, url, delay=3))]
 
         done, pending = await asyncio.wait(fetchers, timeout=1)
 

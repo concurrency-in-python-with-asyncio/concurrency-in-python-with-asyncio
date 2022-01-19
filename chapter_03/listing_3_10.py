@@ -19,20 +19,23 @@ async def echo(connection: socket,
     finally:
         connection.close()
 
+echo_tasks = []
+
 
 async def connection_listener(server_socket, loop):
     while True:
         connection, address = await loop.sock_accept(server_socket)
         connection.setblocking(False)
         print(f"Got a connection from {address}")
-        yield asyncio.create_task(echo(connection, loop))
+        echo_task = asyncio.create_task(echo(connection, loop))
+        echo_tasks.append(echo_task)
 
 
 class GracefulExit(SystemExit):
     pass
 
 
-def shutown():
+def shutdown():
     raise GracefulExit()
 
 
@@ -46,26 +49,18 @@ async def close_echo_tasks(echo_tasks: List[asyncio.Task]):
             pass
 
 
-echo_tasks = []
-
-
-async def listen_for_connections(server_socket, loop):
-    async for echo_task in connection_listener(server_socket, loop):
-        echo_tasks.append(echo_task)
-
-
 async def main():
     server_socket = socket.socket()
     server_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 
-    server_address = ('0.0.0.0', 8000)
+    server_address = ('127.0.0.1', 8000)
     server_socket.setblocking(False)
     server_socket.bind(server_address)
     server_socket.listen()
 
     for signame in {'SIGINT', 'SIGTERM'}:
-        loop.add_signal_handler(getattr(signal, signame), shutown)
-    await listen_for_connections(server_socket, loop)
+        loop.add_signal_handler(getattr(signal, signame), shutdown)
+    await connection_listener(server_socket, loop)
 
 
 loop = asyncio.new_event_loop()

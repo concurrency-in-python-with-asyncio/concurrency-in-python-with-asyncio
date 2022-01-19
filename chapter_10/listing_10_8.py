@@ -9,10 +9,10 @@ from typing import Dict, Set, Awaitable, Optional, List
 
 routes = web.RouteTableDef()
 
-PRODUCT_BASE = 'http://0.0.0.0:8000'
-INVENTORY_BASE = 'http://0.0.0.0:8001'
-FAVORITE_BASE = 'http://0.0.0.0:8002'
-CART_BASE = 'http://0.0.0.0:8003'
+PRODUCT_BASE = 'http://127.0.0.1:8000'
+INVENTORY_BASE = 'http://127.0.0.1:8001'
+FAVORITE_BASE = 'http://127.0.0.1:8002'
+CART_BASE = 'http://127.0.0.1:8003'
 
 
 @routes.get('/products/all')
@@ -55,7 +55,7 @@ async def get_products_with_inventory(session: ClientSession, product_response) 
         url = f"{INVENTORY_BASE}/products/{product_id}/inventory"
         return asyncio.create_task(session.get(url))
 
-    def create_product_record(product_id: int, inventory: int) -> Dict:
+    def create_product_record(product_id: int, inventory: Optional[int]) -> Dict:
         return {'product_id': product_id, 'inventory': inventory}
 
     inventory_tasks_to_product_id = {

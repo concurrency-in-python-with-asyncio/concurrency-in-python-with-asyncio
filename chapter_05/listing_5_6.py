@@ -1,6 +1,6 @@
 import asyncio
 import asyncpg
-from random import randint
+from random import randint, sample
 from typing import List, Tuple
 from chapter_05.listing_5_5 import load_common_words
 

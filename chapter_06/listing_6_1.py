@@ -15,14 +15,14 @@ def count(count_to: int) -> int:
 if __name__ == "__main__":
     start_time = time.time()
 
-    from_one_hundred_million = Process(target=count, args=(100000000,))
-    from_two_hundred_million = Process(target=count, args=(200000000,))
+    to_one_hundred_million = Process(target=count, args=(100000000,))
+    to_two_hundred_million = Process(target=count, args=(200000000,))
 
-    from_one_hundred_million.start()
-    from_two_hundred_million.start()
+    to_one_hundred_million.start()
+    to_two_hundred_million.start()
 
-    from_one_hundred_million.join()
-    from_two_hundred_million.join()
+    to_one_hundred_million.join()
+    to_two_hundred_million.join()
 
     end_time = time.time()
     print(f'Completed in {end_time-start_time}')

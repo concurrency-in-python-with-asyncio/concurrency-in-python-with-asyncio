@@ -71,7 +71,7 @@ class ChatServer:
 
 async def main():
     chat_server = ChatServer()
-    await chat_server.start_chat_server('0.0.0.0', 8000)
+    await chat_server.start_chat_server('127.0.0.1', 8000)
 
 
 asyncio.run(main())

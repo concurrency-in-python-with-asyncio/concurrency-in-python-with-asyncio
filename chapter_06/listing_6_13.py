@@ -19,7 +19,7 @@ async def main():
     counter = Value('d', 0)
     with ProcessPoolExecutor(initializer=init,
                              initargs=(counter,)) as pool:
-        await asyncio.get_event_loop().run_in_executor(pool, increment)
+        await asyncio.get_running_loop().run_in_executor(pool, increment)
         print(counter.value)
 
 

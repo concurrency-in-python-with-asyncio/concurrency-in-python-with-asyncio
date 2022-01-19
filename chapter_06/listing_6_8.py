@@ -14,7 +14,7 @@ def partition(data: List,
 def map_frequencies(chunk: List[str]) -> Dict[str, int]:
     counter = {}
     for line in chunk:
-        word, _, _, count = line.split('\t')
+        word, _, count, _ = line.split('\t')
         if counter.get(word):
             counter[word] = counter[word] + int(count)
         else:
@@ -34,9 +34,9 @@ def merge_dictionaries(first: Dict[str, int],
 
 
 async def main(partition_size: int):
-    with open('googlebooks-eng-all-1gram-20120701-a') as f:
+    with open('googlebooks-eng-all-1gram-20120701-a', encoding='utf-8') as f:
         contents = f.readlines()
-        loop = asyncio.get_event_loop()
+        loop = asyncio.get_running_loop()
         tasks = []
         start = time.time()
         with concurrent.futures.ProcessPoolExecutor() as pool:
@@ -49,7 +49,7 @@ async def main(partition_size: int):
             print(f"Aardvark has appeared {final_result['Aardvark']} times.")
 
             end = time.time()
-            print(f'Map reduce took: {(end - start):.4f} seconds')
+            print(f'MapReduce took: {(end - start):.4f} seconds')
 
 
 if __name__ == "__main__":

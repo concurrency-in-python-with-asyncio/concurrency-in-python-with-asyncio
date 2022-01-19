@@ -30,4 +30,4 @@ def move_to_bottom_of_screen() -> int:
     _, total_rows = shutil.get_terminal_size()
     input_row = total_rows - 1
     sys.stdout.write(f'\033[{input_row}E')
-    return 15
+    return total_rows

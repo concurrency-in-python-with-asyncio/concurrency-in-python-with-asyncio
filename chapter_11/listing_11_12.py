@@ -11,7 +11,9 @@ class FileServer:
         self.upload_event = asyncio.Event()
 
     async def start_server(self):
-        server = await asyncio.start_server(self._client_connected, self.host, self.port)
+        server = await asyncio.start_server(self._client_connected,
+                                            self.host,
+                                            self.port)
         await server.serve_forever()
 
     async def dump_contents_on_complete(self, upload: FileUpload):
@@ -25,7 +27,7 @@ class FileServer:
 
 
 async def main():
-    server = FileServer('0.0.0.0', 9000)
+    server = FileServer('127.0.0.1', 9000)
     await server.start_server()
 
 

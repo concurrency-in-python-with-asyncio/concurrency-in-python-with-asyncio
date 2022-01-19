@@ -13,7 +13,7 @@ def cancel_tasks():
 
 
 async def main():
-    loop: AbstractEventLoop = asyncio.get_event_loop()
+    loop: AbstractEventLoop = asyncio.get_running_loop()
 
     loop.add_signal_handler(signal.SIGINT, cancel_tasks)
 

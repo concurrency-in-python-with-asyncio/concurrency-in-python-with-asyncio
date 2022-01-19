@@ -5,10 +5,10 @@ import asyncio
 async def take(generator, to_take: int):
     item_count = 0
     async for item in generator:
-        yield item
-        item_count = item_count + 1
         if item_count > to_take - 1:
             return
+        item_count = item_count + 1
+        yield item
 
 
 async def main():
@@ -25,7 +25,6 @@ async def main():
             print(product)
 
         print('Got the first five products!')
-
 
     await connection.close()
 

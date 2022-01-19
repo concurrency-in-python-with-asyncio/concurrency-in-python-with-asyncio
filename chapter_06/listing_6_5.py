@@ -14,7 +14,7 @@ def countdown(count_from: int) -> int:
 
 async def main():
     with ProcessPoolExecutor() as process_pool:
-        loop: AbstractEventLoop = asyncio.get_event_loop()
+        loop: AbstractEventLoop = asyncio.get_running_loop()
         nums = [1, 3, 5, 22, 100000000]
         calls: List[partial[int]] = [partial(countdown, num) for num in nums]
         call_coros = []

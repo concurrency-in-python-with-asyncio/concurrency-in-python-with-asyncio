@@ -1,6 +1,5 @@
 import asyncio
 import aiohttp
-from aiohttp import ClientSession
 from util import async_timed
 from chapter_04 import fetch_status
 

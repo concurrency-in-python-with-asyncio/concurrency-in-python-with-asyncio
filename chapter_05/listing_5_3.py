@@ -4,7 +4,7 @@ from chapter_05.listing_5_2 import *
 
 
 async def main():
-    connection = await asyncpg.connect(host='0.0.0.0',
+    connection = await asyncpg.connect(host='127.0.0.1',
                                        port=5432,
                                        user='postgres',
                                        database='products',

@@ -17,7 +17,7 @@ def init(progress: Value):
 def map_frequencies(chunk: List[str]) -> Dict[str, int]:
     counter = {}
     for line in chunk:
-        word, _, _, count = line.split('\t')
+        word, _, count, _ = line.split('\t')
         if counter.get(word):
             counter[word] = counter[word] + int(count)
         else:
@@ -38,9 +38,9 @@ async def progress_reporter(total_partitions: int):
 async def main(partiton_size: int):
     global map_progress
 
-    with open('googlebooks-eng-all-1gram-20120701-a') as f:
+    with open('googlebooks-eng-all-1gram-20120701-a', encoding='utf-8') as f:
         contents = f.readlines()
-        loop = asyncio.get_event_loop()
+        loop = asyncio.get_running_loop()
         tasks = []
         map_progress = Value('i', 0)
 
