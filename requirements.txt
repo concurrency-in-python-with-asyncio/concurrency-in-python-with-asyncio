@@ -2,7 +2,6 @@ aiohttp==3.8.1
 async-timeout==4.0.1
 anyio==3.2.1
 asgiref==3.3.4
-async-timeout==3.0.1
 asyncpg==0.23.0
 attrs==21.2.0
 beautifulsoup4==4.9.3
