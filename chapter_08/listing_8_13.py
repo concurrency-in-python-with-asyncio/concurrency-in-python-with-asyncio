@@ -19,7 +19,7 @@ class ChatServer:
         print(f'CONNECTED {reader} {writer}')
         command, args = command.split(b' ')
         if command == b'CONNECT':
-            username = args.replace(b'\n', b'').decode()
+            username = args.replace(b'\n', b'').replace(b'\r', b'').decode()
             self._add_user(username, reader, writer)
             await self._on_connect(username, writer)
         else:
