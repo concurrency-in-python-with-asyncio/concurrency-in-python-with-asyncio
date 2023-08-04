@@ -3,13 +3,13 @@ import socket
 from asyncio import AbstractEventLoop
 
 
-async def echo(connection: socket,
+async def echo(connection: socket.socket,
                loop: AbstractEventLoop) -> None:
     while data := await loop.sock_recv(connection, 1024):
         await loop.sock_sendall(connection, data)
 
 
-async def listen_for_connection(server_socket: socket,
+async def listen_for_connection(server_socket: socket.socket,
                                 loop: AbstractEventLoop):
     while True:
         connection, address = await loop.sock_accept(server_socket)
