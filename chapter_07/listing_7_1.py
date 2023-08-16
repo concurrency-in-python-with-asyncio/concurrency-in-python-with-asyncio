@@ -2,7 +2,7 @@ from threading import Thread
 import socket
 
 
-def echo(client: socket):
+def echo(client: socket.socket):
     while True:
         data = client.recv(2048)
         print(f'Received {data}, sending!')
