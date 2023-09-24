@@ -75,7 +75,7 @@ async def get_products_with_inventory(session: ClientSession, product_response) 
             product_id = inventory_tasks_to_product_id[done_task]
             product_results.append(create_product_record(product_id, None))
             logging.exception(f'Error getting inventory for id {product_id}',
-                              exc_info=inventory_tasks_to_product_id[done_task].exception())
+                              exc_info=done_task.exception())
 
     for pending_task in inventory_pending:
         pending_task.cancel()
