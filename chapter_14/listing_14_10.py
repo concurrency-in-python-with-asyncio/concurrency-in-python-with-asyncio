@@ -5,17 +5,17 @@ from listing_14_8 import CustomFuture
 from selectors import BaseSelector
 
 
-def accept_connection(future: CustomFuture, connection: socket): #A
+def accept_connection(future: CustomFuture, connection: socket.socket): #A
     print(f'We got a connection from {connection}!')
     future.set_result(connection)
 
 
-async def sock_accept(sel: BaseSelector, sock) -> socket: #B
+async def sock_accept(sel: BaseSelector, sock) -> socket.socket: #B
     print('Registering socket to listen for connections')
     future = CustomFuture()
     sel.register(sock, selectors.EVENT_READ, functools.partial(accept_connection, future))
     print('Pausing to listen for connections...')
-    connection: socket = await future
+    connection: socket.socket = await future
     return connection
 
 
